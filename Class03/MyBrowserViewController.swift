@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
-class MyBrowserViewController: UIViewController {
+class MyBrowserViewController: UIViewController, UITextFieldDelegate{
 
+    
+    @IBOutlet weak var btnGoBottomConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var myWebView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        myWebView.load(URLRequest(url: URL(string: "https://www.google.com.tw")!))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,12 +42,51 @@ class MyBrowserViewController: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    //MARK:-TEXTFIELD
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let accept = "abcdeABCDE"
+
+        let cs = NSCharacterSet(charactersIn: accept).inverted
+
+        let filters=string.components(separatedBy: cs).joined(separator: "")
+        
+        if(string != filters)
+        {
+            return false
+        }
+        //限制使用者輸入字數
+        let current = textField.text! as NSString
+        
+        let newString :NSString = current.replacingCharacters(in: range, with: string) as NSString
+        
+        
+        return newString.length <= 10
+    }
+    
+    //MARK:-Keyboard
     @objc func keyboardWillAppear(notification:NSNotification?){
         print("keyboardWillAppear")
+        
+        guard let frame = notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]as? NSValue else { return }
+        
+        UIView.animate(withDuration: 50, animations:{
+            self.btnGoBottomConstraint.constant=frame.cgRectValue.height;
+        })
+    
+        
     }
     
     @objc func keyboardWillDisAppear(notification:NSNotification?){
         print("keyboardWillDisAppear")
+        UIView.animate(withDuration: 15, animations:{
+            self.btnGoBottomConstraint.constant=31;
+        })
     }
     
     
