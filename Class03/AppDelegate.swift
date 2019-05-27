@@ -20,6 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //UserDefaults.standard.setValue("ya!", forKey: "hi")
+        //UserDefaults.standard.synchronize()
+        
+        //print("\( UserDefaults.standard.string(forKey: "hi")! )")
+        
+        print("\( NSHomeDirectory())")
+        
         return true
     }
 
