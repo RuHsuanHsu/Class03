@@ -43,7 +43,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FtT-ve-z0F" kind="show" id="rPd-kp-APn"/>
+                                    <action selector="btnMoveToImageClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lDQ-Gb-niv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUu-o3-Sba">
@@ -57,6 +57,16 @@
                                     <segue destination="tm6-kk-Ecn" kind="show" id="oqY-zK-KEL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DLk-Kq-YZl">
+                                <rect key="frame" x="133" y="693" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="C">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMapClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tgd-DE-fiF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -64,6 +74,8 @@
                     <navigationItem key="navigationItem" id="Opa-q3-HzO"/>
                     <connections>
                         <outlet property="lbMessage" destination="i3R-9D-LrP" id="URT-xg-a3Z"/>
+                        <segue destination="FtT-ve-z0F" kind="show" identifier="moveToM2KSegue" id="a55-PT-Akk"/>
+                        <segue destination="y6Z-bX-LEG" kind="show" identifier="moveToMapSegue" id="Pti-Ns-hTE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -127,20 +139,60 @@
             </objects>
             <point key="canvasLocation" x="2013.0434782608697" y="-376.33928571428572"/>
         </scene>
-        <!--View Controller-->
+        <!--Image View Controller-->
         <scene sceneID="xJ1-KZ-edy">
             <objects>
-                <viewController id="FtT-ve-z0F" sceneMemberID="viewController">
+                <viewController id="FtT-ve-z0F" customClass="ImageViewController" customModule="Class03" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L3d-cP-B29">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="M2K" translatesAutoresizingMaskIntoConstraints="NO" id="kcz-dZ-m49">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.9881020611137119" green="0.85472222914165175" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="eeJ-7j-ouW" firstAttribute="bottom" secondItem="kcz-dZ-m49" secondAttribute="bottom" id="4Lo-9L-3YF"/>
+                            <constraint firstItem="kcz-dZ-m49" firstAttribute="top" secondItem="eeJ-7j-ouW" secondAttribute="top" id="HDw-Wc-XTg"/>
+                            <constraint firstItem="eeJ-7j-ouW" firstAttribute="trailing" secondItem="kcz-dZ-m49" secondAttribute="trailing" id="iK4-eY-75i"/>
+                            <constraint firstItem="kcz-dZ-m49" firstAttribute="leading" secondItem="eeJ-7j-ouW" secondAttribute="leading" id="sbS-01-jH1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eeJ-7j-ouW"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I9b-T9-eBo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2013" y="372"/>
+        </scene>
+        <!--My Map View Controller-->
+        <scene sceneID="5HK-en-4jF">
+            <objects>
+                <viewController id="y6Z-bX-LEG" customClass="MyMapViewController" customModule="Class03" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iuK-IT-IOF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CCi-iG-loz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CCi-iG-loz" firstAttribute="leading" secondItem="93O-Lb-SUl" secondAttribute="leading" id="DLg-V5-JHb"/>
+                            <constraint firstItem="93O-Lb-SUl" firstAttribute="bottom" secondItem="CCi-iG-loz" secondAttribute="bottom" id="ZHd-K6-I6y"/>
+                            <constraint firstItem="93O-Lb-SUl" firstAttribute="trailing" secondItem="CCi-iG-loz" secondAttribute="trailing" id="h7x-3J-Jtz"/>
+                            <constraint firstItem="CCi-iG-loz" firstAttribute="top" secondItem="93O-Lb-SUl" secondAttribute="top" id="xH2-mK-SWY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="93O-Lb-SUl"/>
+                    </view>
+                    <connections>
+                        <outlet property="myMapView" destination="CCi-iG-loz" id="t5i-tN-9S9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Umo-Mw-nmR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="1103"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Zn-OG-b3n">
@@ -161,4 +213,7 @@
             <point key="canvasLocation" x="40.579710144927539" y="25.446428571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="M2K" width="483.33334350585938" height="234.33332824707031"/>
+    </resources>
 </document>
