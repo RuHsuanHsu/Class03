@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnMapClicked(_ sender: UIButton) {
-        performSegue(withIdentifier: "moveToMapSegue", sender: self)
+        self.performSegue(withIdentifier: "moveToMapSegue", sender: self)
         
     }
     @IBAction func btnMoveToImageClicked(_ sender: Any) {
