@@ -61,7 +61,7 @@ class MyBrowserViewController: UIViewController, UITextFieldDelegate, AsyncRepon
         self.view.endEditing(true)
     }
     
-    //MARK:-TEXTFIELD
+    //MARK: - TEXTFIELD
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -84,7 +84,7 @@ class MyBrowserViewController: UIViewController, UITextFieldDelegate, AsyncRepon
         return newString.length <= 10
     }
     
-    //MARK:-Keyboard
+    //MARK: - Keyboard
     @objc func keyboardWillAppear(notification:NSNotification?){
         print("keyboardWillAppear")
         
